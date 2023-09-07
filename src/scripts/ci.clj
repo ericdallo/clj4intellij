@@ -1,4 +1,4 @@
-(ns scripts
+(ns ci
   (:require
    [babashka.tasks :refer [shell]]
    [clojure.string :as string]))
@@ -18,7 +18,10 @@
 (defn ^:private replace-tag [tag]
   (replace-in-file "gradle.properties"
                    #"pluginVersion = [0-9]+.[0-9]+.[0-9]+.*"
-                   (format "pluginVersion = %s" tag)))
+                   (format "pluginVersion = %s" tag))
+  (replace-in-file "src/main/resources/CLJ4INTELLIJ_VERSION"
+                   #"pluginVersion = [0-9]+.[0-9]+.[0-9]+.*"
+                   tag))
 
 #_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
 (defn tag [& [tag]]
@@ -31,3 +34,7 @@
   (shell (str "git tag " tag))
   (shell "git push origin HEAD")
   (shell "git push origin --tags"))
+
+#_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
+(defn deploy [& _args]
+  (shell "lein deploy clojars"))
