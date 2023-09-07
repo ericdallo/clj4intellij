@@ -6,8 +6,8 @@ Library for create IntelliJ plugins with Clojure.
 
 Configure [clojurephant](https://clojurephant.dev) first:
 
+`build.gradle.kts`
 ```kotlin
-    
 plugins {
     ...
     id("dev.clojurephant.clojure") version "VERSION"
@@ -22,7 +22,8 @@ clojure.builds.named("main") {
 
 Add clj4intellij as dependency:
 
-```xml
+`build.gradle.kts`
+```kotlin
 repositories {
     ...
     maven {
@@ -38,6 +39,7 @@ dependencies {
 
 Add an application listener that will change the classloader on IntelliJ startup to load your plugin Clojure code:
 
+`src/main/resources/META-INF/plugin.xml`
 ```xml
 <applicationListeners>
         <listener topic="com.intellij.ide.AppLifecycleListener"
