@@ -4,7 +4,7 @@
   <packaging>jar</packaging>
   <groupId>com.github.ericdallo</groupId>
   <artifactId>clj4intellij</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.2</version>
   <name>clj4intellij</name>
   <dependencies>
     <dependency>
@@ -41,6 +41,6 @@
     </repository>
   </repositories>
   <scm>
-    <tag>0.1.0</tag>
+    <tag>0.1.2</tag>
   </scm>
 </project>
