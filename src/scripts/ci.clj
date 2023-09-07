@@ -32,7 +32,7 @@
   (shell "git pull origin HEAD")
   (replace-tag tag)
   (add-changelog-entry tag nil)
-  (shell "git add gradle.properties CHANGELOG.md")
+  (shell "git add gradle.properties CHANGELOG.md src/main/resources/CLJ4INTELLIJ_VERSION")
   (shell (format "git commit -m \"Release: %s\"" tag))
   (shell (str "git tag " tag))
   (shell "git push origin HEAD")
