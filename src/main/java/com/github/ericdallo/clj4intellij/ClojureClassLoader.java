@@ -1,4 +1,4 @@
-package dev.ericdallo.clj4intellij;
+package com.github.ericdallo.clj4intellij;
 
 public class ClojureClassLoader {
     static {

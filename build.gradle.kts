@@ -13,7 +13,7 @@ version = properties("version")
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = "dev.ericdallo"
+            groupId = "com.github.ericdallo"
             artifactId = "clj4intellij"
             version = "0.1.0"
 

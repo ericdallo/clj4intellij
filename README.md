@@ -33,7 +33,7 @@ repositories {
 }
 dependencies {
     ...
-    implementation ("dev.ericdallo:clj4intellij:VERSION")
+    implementation ("com.github.ericdallo:clj4intellij:VERSION")
 }
 ```
 
@@ -43,7 +43,7 @@ Add an application listener that will change the classloader on IntelliJ startup
 ```xml
 <applicationListeners>
         <listener topic="com.intellij.ide.AppLifecycleListener"
-                  class="dev.ericdallo.clj4intellij.listener.ClojureClassLoaderListener"/>
+                  class="com.github.ericdallo.clj4intellij.listener.ClojureClassLoaderListener"/>
 </applicationListeners>
 ```
 

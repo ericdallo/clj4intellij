@@ -1,10 +1,10 @@
-(ns dev.ericdallo.clj4intellij.listener.class-loader
+(ns com.github.ericdallo.clj4intellij.listener.class-loader
   (:gen-class
-   :name dev.ericdallo.clj4intellij.listener.ClojureClassLoaderListener
-   :extends dev.ericdallo.clj4intellij.ClojureClassLoader
+   :name com.github.ericdallo.clj4intellij.listener.ClojureClassLoaderListener
+   :extends com.github.ericdallo.clj4intellij.ClojureClassLoader
    :implements [com.intellij.ide.AppLifecycleListener])
   (:import
-   [dev.ericdallo.clj4intellij ClojureClassLoader]))
+   [com.github.ericdallo.clj4intellij ClojureClassLoader]))
 
 (defn -appFrameCreated [_ _] (ClojureClassLoader/bind))
 

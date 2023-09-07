@@ -3,7 +3,7 @@
    [clojure.string :as string]
    [clojure.tools.build.api :as b]))
 
-(def lib 'dev.ericdallo/clj4intellij)
+(def lib 'com.github.ericdallo/clj4intellij)
 (def jar-file (format "target/%s.jar" (name lib)))
 
 (def current-version (string/trim (slurp "src/main/resources/CLJ4INTELLIJ_VERSION")))
