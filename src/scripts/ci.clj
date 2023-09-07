@@ -20,8 +20,11 @@
                    #"pluginVersion = [0-9]+.[0-9]+.[0-9]+.*"
                    (format "pluginVersion = %s" tag))
   (replace-in-file "src/main/resources/CLJ4INTELLIJ_VERSION"
-                   #"pluginVersion = [0-9]+.[0-9]+.[0-9]+.*"
-                   tag))
+                   #"[0-9]+.[0-9]+.[0-9]+.*"
+                   tag)
+  (replace-in-file "gradle.properties"
+                   #"version = [0-9]+.[0-9]+.[0-9]+.*"
+                   (format "version = %s" tag)))
 
 #_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
 (defn tag [& [tag]]
