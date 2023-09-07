@@ -1,13 +1,16 @@
 {:paths ["src/main/clojure" "target/classes"]
  :mvn/repos {"intellij-1" {:url "https://cache-redirector.jetbrains.com/intellij-dependencies"}
-             "intellij-2" {:url "https://cache-redirector.jetbrains.com/repo1.maven.org/maven2"}
-             "gradle-plugins" {:url "https://plugins.gradle.org/m2"}}
+             "intellij-2" {:url "https://www.jetbrains.com/intellij-repository/releases"}}
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
-        com.rpl/proxy-plus {:mvn/version "0.0.9"}
-        com.jetbrains.intellij.platform/core {:mvn/version "233.4644"}}
- :aliases {:build {:deps {org.clojure/clojure {:mvn/version "1.11.1"}
-                          io.github.clojure/tools.build {:git/url "https://github.com/clojure/tools.build.git"
-                                                         :tag "v0.9.4"
-                                                         :sha "76b78fe"}
-                          slipset/deps-deploy {:mvn/version "0.2.1"}}
-                   :ns-default build}}}
+        com.rpl/proxy-plus {:mvn/version "0.0.9"}}
+ :aliases {:dev {:deps {com.jetbrains.intellij.platform/ide-impl {:mvn/version "213.7172.48"
+                                                                  :exclusions [org.jetbrains.kotlin/kotlin-stdlib-jdk8
+                                                                               org.jetbrains.kotlin/kotlin-reflect
+                                                                               org.jetbrains.kotlinx/kotlinx-coroutines-jdk8
+                                                                               org.jetbrains.kotlinx/kotlinx-serialization-json-jvm
+                                                                               org.jetbrains.kotlinx/kotlinx-serialization-core-jvm
+
+                                                                               com.jetbrains.intellij.platform/external-system-impl
+                                                                               com.jetbrains.intellij.platform/service-container
+                                                                               com.jetbrains.intellij.platform/statistics-devkit
+                                                                               com.jetbrains.infra/download-pgp-verifier]}}}}}
