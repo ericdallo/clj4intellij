@@ -25,7 +25,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.ericdallo"
             artifactId = "clj4intellij"
-            version = "0.1.2"
+            version = properties("version")
 
             from(components["java"])
         }

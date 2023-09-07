@@ -19,9 +19,6 @@
   (replace-in-file "gradle.properties"
                    #"pluginVersion = [0-9]+.[0-9]+.[0-9]+.*"
                    (format "pluginVersion = %s" tag))
-  (replace-in-file "build.gradle.kts"
-                   #"version = [0-9]+.[0-9]+.[0-9]+.*"
-                   (format "version = \"%s\"" tag))
   (replace-in-file "gradle.properties"
                    #"version = [0-9]+.[0-9]+.[0-9]+.*"
                    (format "version = %s" tag)))
@@ -32,7 +29,7 @@
   (shell "git pull origin HEAD")
   (replace-tag tag)
   (add-changelog-entry tag nil)
-  (shell "git add gradle.properties CHANGELOG.md src/main/resources/CLJ4INTELLIJ_VERSION")
+  (shell "git add gradle.properties CHANGELOG.md")
   (shell (format "git commit -m \"Release: %s\"" tag))
   (shell (str "git tag " tag))
   (shell "git push origin HEAD")
