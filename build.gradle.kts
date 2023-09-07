@@ -15,6 +15,10 @@ publishing {
         maven {
             // change to point to your repo, e.g. http://my.org/repo
             url = uri("https://repo.clojars.org")
+            credentials {
+                username = System.getenv("CLOJARS_USERNAME")
+                password = System.getenv("CLOJARS_PASSWORD")
+            }
         }
     }
     publications {
