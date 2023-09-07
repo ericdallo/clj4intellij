@@ -1,3 +1,2 @@
 {:paths ["src/scripts"]
- :tasks {tag ci/tag
-         deploy-clojars (shell "clojure -T:build deploy-clojars")}}
+ :tasks {tag ci/tag}}

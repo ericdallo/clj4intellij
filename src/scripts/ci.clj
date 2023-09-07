@@ -19,9 +19,9 @@
   (replace-in-file "gradle.properties"
                    #"pluginVersion = [0-9]+.[0-9]+.[0-9]+.*"
                    (format "pluginVersion = %s" tag))
-  (replace-in-file "src/main/resources/CLJ4INTELLIJ_VERSION"
-                   #"[0-9]+.[0-9]+.[0-9]+.*"
-                   tag)
+  (replace-in-file "build.gradle.kts"
+                   #"version = [0-9]+.[0-9]+.[0-9]+.*"
+                   (format "version = \"%s\"" tag))
   (replace-in-file "gradle.properties"
                    #"version = [0-9]+.[0-9]+.[0-9]+.*"
                    (format "version = %s" tag)))
@@ -37,7 +37,3 @@
   (shell (str "git tag " tag))
   (shell "git push origin HEAD")
   (shell "git push origin --tags"))
-
-#_{:clj-kondo/ignore [:clojure-lsp/unused-public-var]}
-(defn deploy [& _args]
-  (shell "lein deploy clojars"))

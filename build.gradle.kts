@@ -11,11 +11,17 @@ group = properties("group")
 version = properties("version")
 
 publishing {
+    repositories {
+        maven {
+            // change to point to your repo, e.g. http://my.org/repo
+            url = uri("https://repo.clojars.org")
+        }
+    }
     publications {
         create<MavenPublication>("maven") {
             groupId = "com.github.ericdallo"
             artifactId = "clj4intellij"
-            version = "0.1.0"
+            version = "0.1.2"
 
             from(components["java"])
         }
