@@ -2,18 +2,8 @@
 
 ## [Unreleased]
 
-## 0.1.3
+- Add `com.github.ericdallo.clj4intellij.app-manager` namespace with functions to access `ApplicationManager`.
 
 ## 0.1.3
-
-## 0.1.2
-
-## 0.1.2
-
-## 0.1.2
-
-## 0.1.1
-
-## 0.1.0
 
 - First release
