@@ -1,3 +1,5 @@
+[![Clojars Project](https://img.shields.io/clojars/v/com.github.ericdallo/clj4intellij.svg)](https://clojars.org/com.github.ericdallo/clj4intellij)
+
 # clj4intellij
 
 Library for create IntelliJ plugins with Clojure.
