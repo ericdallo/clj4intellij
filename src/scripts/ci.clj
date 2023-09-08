@@ -1,5 +1,6 @@
 (ns ci
   (:require
+   [babashka.fs :as fs]
    [babashka.tasks :refer [shell]]
    [clojure.string :as string]))
 
@@ -34,3 +35,11 @@
   (shell (str "git tag " tag))
   (shell "git push origin HEAD")
   (shell "git push origin --tags"))
+
+(defn install [& _]
+  (shell "./gradlew clean")
+  (fs/copy-tree "src/main/clojure/" "build/resources/main/")
+  (shell "./gradlew build publishToMavenLocal"))
+
+(defn deploy [& _]
+  (shell "./gradlew clean build publish"))

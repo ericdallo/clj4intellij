@@ -1,4 +1,5 @@
 {:paths ["src/scripts"]
  :tasks {tag ci/tag
-         install (shell "./gradlew clean build publishToMavenLocal")
-         deploy (shell "./gradlew clean build publish")}}
+         clean (shell "./gradlew clean")
+         install ci/install
+         deploy ci/deploy}}

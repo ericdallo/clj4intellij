@@ -49,11 +49,8 @@ dependencies {
 
 sourceSets {
     main {
-        java.srcDirs("src/main")
-        resources.srcDirs("resources")
-    }
-    test {
-        java.srcDirs("tests")
+        java.setSrcDirs(listOf("src/main/java"))
+        resources.setSrcDirs(listOf("src/main/resources"))
     }
 }
 
