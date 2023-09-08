@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.2.1
+
 - Include clojure source to jar.
 
 ## 0.2.0
