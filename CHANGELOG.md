@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.3.1
+
 - Support custom nrepl ports
 
 ## 0.3.0
