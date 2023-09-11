@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Support custom nrepl ports
+
 ## 0.3.0
 
 - Add NREPL and logger support.

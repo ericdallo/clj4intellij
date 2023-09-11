@@ -53,13 +53,20 @@ Now you can create clojure namespaces in your sourcepath (ex `src/main/clojure`)
 
 ### Repl support
 
-Add this extension and after startup the port will be logged in IntelliJ's log, then you can connect from any editor to that port to development:
+Add this extension and after startup a random port will be logged in IntelliJ's log, then you can connect from any editor to that port to development:
 
 `src/main/resources/META-INF/plugin.xml`
 ```xml
 <extensions defaultExtensionNs="com.intellij">
     <postStartupActivity implementation="com.github.ericdallo.clj4intellij.extension.NREPLStartup"/>
 </extensions>
+```
+
+You can specify a port to always be used in the clj4intellij config file:
+
+`src/main/resources/META-INF/clj4intellij.edn`
+```xml
+{:nrepl-port 9876}
 ```
 
 ### Logging

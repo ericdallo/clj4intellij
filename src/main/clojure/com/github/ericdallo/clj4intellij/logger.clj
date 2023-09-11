@@ -1,6 +1,7 @@
 (ns com.github.ericdallo.clj4intellij.logger
   (:require
-   [clojure.string :as string])
+   [clojure.string :as string]
+   [com.github.ericdallo.clj4intellij.config :as plugin])
   (:import
    [com.github.ericdallo.clj4intellij ClojureClassLoader]
    [com.intellij.openapi.diagnostic Logger]))
@@ -10,7 +11,9 @@
 (defonce ^Logger logger (Logger/getInstance ClojureClassLoader))
 
 (defn ^:private build-msg ^String [messages]
-  (string/join " " (mapv str messages)))
+  (format "[%s] %s"
+          (plugin/plugin-name)
+          (string/join " " (mapv str messages))))
 
 (defn info [& messages]
   (.info logger (build-msg messages)))

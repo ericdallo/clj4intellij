@@ -4,7 +4,8 @@
    :implements [com.intellij.openapi.startup.StartupActivity
                 com.intellij.openapi.project.DumbAware])
   (:require
-   [com.github.ericdallo.clj4intellij.logger :as logger])
+   [com.github.ericdallo.clj4intellij.logger :as logger]
+   [com.github.ericdallo.clj4intellij.config :as plugin])
   (:import
    [com.github.ericdallo.clj4intellij ClojureClassLoader]
    [com.intellij.openapi.project Project]
@@ -18,7 +19,8 @@
 
 (defn -runActivity [_this ^Project _]
   (ClojureClassLoader/bind)
-  (let [port (get-open-port)]
+  (let [port (or (plugin/nrepl-port)
+                 (get-open-port))]
     (logger/info "Starting nrepl server on port" port "...")
     (try
       ((requiring-resolve 'nrepl.server/start-server)
