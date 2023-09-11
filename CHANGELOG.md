@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.3.0
+
 - Add NREPL and logger support.
 
 ## 0.2.1
