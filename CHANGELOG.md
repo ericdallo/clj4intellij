@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Add NREPL and logger support.
+
 ## 0.2.1
 
 - Include clojure source to jar.

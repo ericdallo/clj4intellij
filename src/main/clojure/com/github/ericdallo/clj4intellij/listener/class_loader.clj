@@ -6,6 +6,8 @@
   (:import
    [com.github.ericdallo.clj4intellij ClojureClassLoader]))
 
+(set! *warn-on-reflection* true)
+
 (defn -appFrameCreated [_ _] (ClojureClassLoader/bind))
 
 (defn -welcomeScreenDisplayed [_])

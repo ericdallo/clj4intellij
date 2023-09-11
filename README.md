@@ -44,12 +44,27 @@ Add an application listener that will change the classloader on IntelliJ startup
 `src/main/resources/META-INF/plugin.xml`
 ```xml
 <applicationListeners>
-        <listener topic="com.intellij.ide.AppLifecycleListener"
-                  class="com.github.ericdallo.clj4intellij.listener.ClojureClassLoaderListener"/>
+    <listener topic="com.intellij.ide.AppLifecycleListener"
+              class="com.github.ericdallo.clj4intellij.listener.ClojureClassLoaderListener"/>
 </applicationListeners>
 ```
 
 Now you can create clojure namespaces in your sourcepath (ex `src/main/clojure`), use clj4intellij helpers to create extensions or implement yourself extensions using Clojure's `gen-class`.
+
+### Repl support
+
+Add this extension and after startup the port will be logged in IntelliJ's log, then you can connect from any editor to that port to development:
+
+`src/main/resources/META-INF/plugin.xml`
+```xml
+<extensions defaultExtensionNs="com.intellij">
+    <postStartupActivity implementation="com.github.ericdallo.clj4intellij.extension.NREPLStartup"/>
+</extensions>
+```
+
+### Logging
+
+There is the `com.github.ericdallo.clj4intellij.logger` ns which can be used to log messages to intelliJ's log via Clojure.
 
 ## How it works?
 
