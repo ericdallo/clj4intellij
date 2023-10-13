@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## 0.3.2
+
+- Include clojure code to jar.
+
 ## 0.3.1
 
 - Support custom nrepl ports

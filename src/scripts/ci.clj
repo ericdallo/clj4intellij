@@ -38,8 +38,9 @@
 
 (defn install [& _]
   (shell "./gradlew clean")
-  (fs/copy-tree "src/main/clojure/" "build/resources/main/")
-  (shell "./gradlew build publishToMavenLocal"))
+  (fs/copy-tree "src/main/clojure/" "src/main/resources/")
+  (shell "./gradlew build publishToMavenLocal")
+  (fs/delete-tree "src/main/resources/"))
 
 (defn deploy [& _]
   (shell "./gradlew clean build publish"))
