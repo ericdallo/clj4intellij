@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.3.3
+
 - Fix prod jar
 
 ## 0.3.2
