@@ -4,6 +4,8 @@
 
 ## 0.3.2
 
+## 0.3.2
+
 - Include clojure code to jar.
 
 ## 0.3.1
