@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.3.4
+
 - Allow skip nrepl server setup if nrepl key is nullable.
 
 ## 0.3.3
