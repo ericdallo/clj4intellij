@@ -22,16 +22,13 @@ publishing {
         }
     }
     publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.ericdallo"
-            artifactId = "clj4intellij"
-            version = properties("version")
-
-            from(components["java"])
-            licenses {
-                license {
-                    name = "MIT License"
-                    url = "http://www.opensource.org/licenses/mit-license.php"
+        create<MavenPublication>("mavenJava") {
+            pom {
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("http://www.opensource.org/licenses/mit-license.php")
+                    }
                 }
             }
         }
