@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Allow skip nrepl server setup if nrepl key is nullable.
+
 ## 0.3.3
 
 - Fix prod jar

@@ -32,7 +32,10 @@
   (when-let [plugin (plugin)]
     (last (re-find #"<name>(.+)</name>" plugin))))
 
+(defn nrepl-support? []
+  (-> (config) :nrepl))
+
 (defn nrepl-port []
-  (:nrepl-port (config)))
+  (-> (config) :nrepl :port))
 
 (def plugin-name (memoize-if-not-nil plugin-name*))

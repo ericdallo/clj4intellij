@@ -66,7 +66,7 @@ You can specify a port to always be used in the clj4intellij config file:
 
 `src/main/resources/META-INF/clj4intellij.edn`
 ```xml
-{:nrepl-port 9876}
+{:nrepl {:port 9876}}
 ```
 
 ### Logging
