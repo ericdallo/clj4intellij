@@ -28,6 +28,12 @@ publishing {
             version = properties("version")
 
             from(components["java"])
+            licenses {
+                license {
+                    name = "MIT License"
+                    url = "http://www.opensource.org/licenses/mit-license.php"
+                }
+            }
         }
     }
 }
