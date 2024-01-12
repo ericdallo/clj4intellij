@@ -19,7 +19,7 @@
 
 (defn -runActivity [_this ^Project _]
   (ClojureClassLoader/bind)
-  (when (plugin/nrepl-support?)
+  (if (plugin/nrepl-support?)
     (let [port (or (plugin/nrepl-port)
                    (get-open-port))]
       (logger/info "Starting nrepl server on port" port "...")
@@ -28,4 +28,5 @@
          :port port)
         (logger/info "Started nrepl server at port" port)
         (catch Exception e
-          (logger/warn "Could not start nrepl server, error:" e))))))
+          (logger/warn "Could not start nrepl server, error:" e))))
+    (logger/info "Skipping nrepl server start, no config found.")))
