@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Add tasks and util namespace.
+
 ## 0.3.7
 
 ## 0.3.6
