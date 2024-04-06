@@ -10,7 +10,7 @@
     KeyboardShortcut]
    [com.intellij.openapi.keymap KeymapManager]
    [com.intellij.openapi.project DumbAwareAction]
-   [javax.swing Icon]))
+   [javax.swing Icon KeyStroke]))
 
 (set! *warn-on-reflection* true)
 
@@ -20,19 +20,24 @@
   [& {:keys [id title description icon use-shortcut-of keyboard-shortcut on-performed]}]
   (let [manager (ActionManager/getInstance)
         keymap-manager (KeymapManager/getInstance)
+        keymap (.getActiveKeymap keymap-manager)
         action (proxy+
                 [^String title ^String description ^Icon icon]
                 DumbAwareAction
                  (actionPerformed [_ event] (on-performed event)))]
     (.registerAction manager id action)
     (when use-shortcut-of
-      (.addShortcut (.getActiveKeymap keymap-manager)
+      (.addShortcut keymap
                     id
                     (first (.getShortcuts (.getShortcutSet (.getAction manager use-shortcut-of))))))
     (when keyboard-shortcut
-      (.addShortcut (.getActiveKeymap keymap-manager)
-                    id
-                    (KeyboardShortcut/fromString keyboard-shortcut)))
+      (let [k-shortcut (KeyboardShortcut. (KeyStroke/getKeyStroke ^String (:first keyboard-shortcut))
+                                        (some-> ^String (:second keyboard-shortcut) KeyStroke/getKeyStroke))]
+        (.addShortcut keymap id k-shortcut)
+        (when (:replace-all keyboard-shortcut)
+          (doseq [[conflict-action-id shortcuts] (.getConflicts keymap id k-shortcut)]
+            (doseq [shortcut shortcuts]
+              (.removeShortcut keymap conflict-action-id shortcut))))))
     action))
 
 (defn ^:private ->constraint ^Constraints [anchor relative-to]

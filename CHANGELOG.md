@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Support multiple keystrokes on action keymap.
+
 ## 0.5.0
 
 - Add `com.github.ericdallo.clj4intellij.action` ns to register actions dynamically.
