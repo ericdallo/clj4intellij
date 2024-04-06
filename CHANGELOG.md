@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Add `com.github.ericdallo.clj4intellij.action` ns to register actions dynamically.
+
 ## 0.4.0
 
 - Add tasks and util namespace.

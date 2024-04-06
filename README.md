@@ -82,6 +82,7 @@ Also contains useful functions for a more Clojure idiomatic development avoid th
 ## Useful namespaces
 
 - `com.github.ericdallo.clj4intellij.app-manager` to handle `Application` calls.
+- `com.github.ericdallo.clj4intellij.action` to register actions dynamically.
 
 ## Plugins using clj4intellij
 
