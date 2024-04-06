@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.5.1
+
 - Support multiple keystrokes on action keymap.
 
 ## 0.5.0
