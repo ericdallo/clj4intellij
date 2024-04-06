@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.5.0
+
 - Add `com.github.ericdallo.clj4intellij.action` ns to register actions dynamically.
 
 ## 0.4.0
