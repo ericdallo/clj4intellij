@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.5.2
+
 - Register actions only if not registered before.
 
 ## 0.5.1
