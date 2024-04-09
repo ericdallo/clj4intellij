@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Register actions only if not registered before.
+
 ## 0.5.1
 
 - Support multiple keystrokes on action keymap.
