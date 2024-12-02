@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Fix keyboard shortcut register to not always add the default shortcut.
+
 ## 0.5.2
 
 - Register actions only if not registered before.
