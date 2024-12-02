@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.5.3
+
 - Fix keyboard shortcut register to not always add the default shortcut.
 
 ## 0.5.2
