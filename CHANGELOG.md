@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.5.4
+
 - Fix keyboard shortcut side effect from 0.5.3 change.
 
 ## 0.5.3
