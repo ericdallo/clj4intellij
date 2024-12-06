@@ -34,7 +34,7 @@
       (when keyboard-shortcut
         (let [k-shortcut (KeyboardShortcut. (KeyStroke/getKeyStroke ^String (:first keyboard-shortcut))
                                             (some-> ^String (:second keyboard-shortcut) KeyStroke/getKeyStroke))]
-          (when (empty (.getShortcuts keymap id))
+          (when (empty? (.getShortcuts keymap id))
             (.addShortcut keymap id k-shortcut))
           (when (:replace-all keyboard-shortcut)
             (doseq [[conflict-action-id shortcuts] (.getConflicts keymap id k-shortcut)]

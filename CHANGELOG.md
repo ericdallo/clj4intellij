@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Fix keyboard shortcut side effect from 0.5.3 change.
+
 ## 0.5.3
 
 - Fix keyboard shortcut register to not always add the default shortcut.
