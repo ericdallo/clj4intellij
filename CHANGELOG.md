@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Add unregister-action! and improve register-action!
+
 ## 0.5.4
 
 - Fix keyboard shortcut side effect from 0.5.3 change.

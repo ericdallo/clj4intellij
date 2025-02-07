@@ -17,14 +17,14 @@
 #_{:clj-kondo/ignore [:unused-binding]}
 (defn register-action!
   "Dynamically register an action if not already registered."
-  [& {:keys [id title description icon use-shortcut-of keyboard-shortcut on-performed]}]
+  [& {:keys [id title description icon use-shortcut-of keyboard-shortcut on-performed action]
+      :or {action (proxy+
+                   [^String title ^String description ^Icon icon]
+                   DumbAwareAction
+                    (actionPerformed [_ event] (on-performed event)))}}]
   (let [manager (ActionManager/getInstance)
         keymap-manager (KeymapManager/getInstance)
-        keymap (.getActiveKeymap keymap-manager)
-        action (proxy+
-                [^String title ^String description ^Icon icon]
-                DumbAwareAction
-                 (actionPerformed [_ event] (on-performed event)))]
+        keymap (.getActiveKeymap keymap-manager)]
     (when-not (.getAction manager id)
       (.registerAction manager id action)
       (when use-shortcut-of
@@ -41,6 +41,11 @@
               (doseq [shortcut shortcuts]
                 (.removeShortcut keymap conflict-action-id shortcut))))))
       action)))
+
+(defn unregister-action [id]
+  (let [manager (ActionManager/getInstance)]
+    (when (.getAction manager id)
+      (.unregisterAction (ActionManager/getInstance id) id))))
 
 (defn ^:private ->constraint ^Constraints [anchor relative-to]
   (Constraints. (case anchor
