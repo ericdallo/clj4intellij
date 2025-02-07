@@ -45,7 +45,7 @@
 (defn unregister-action [id]
   (let [manager (ActionManager/getInstance)]
     (when (.getAction manager id)
-      (.unregisterAction (ActionManager/getInstance id) id))))
+      (.unregisterAction manager id))))
 
 (defn ^:private ->constraint ^Constraints [anchor relative-to]
   (Constraints. (case anchor
