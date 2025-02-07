@@ -2,8 +2,6 @@
 
 ## [Unreleased]
 
-## 0.6.0
-
 - Add unregister-action! and improve register-action!
 
 ## 0.5.4
