@@ -4,7 +4,6 @@
   (:import
    [com.intellij.openapi.progress ProgressIndicator ProgressManager Task$Backgroundable]))
 
-#_{:clj-kondo/ignore [:unused-binding]}
 (defn run-background-task! [project title run-fn]
   (.run (ProgressManager/getInstance)
         (proxy+

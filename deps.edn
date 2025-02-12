@@ -1,4 +1,4 @@
-{:paths ["src/main/clojure" "target/classes"]
+{:paths ["src/main/clojure" "target/classes" "resources"]
  :mvn/repos {"intellij-1" {:url "https://cache-redirector.jetbrains.com/intellij-dependencies"}
              "intellij-2" {:url "https://www.jetbrains.com/intellij-repository/releases"}}
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
