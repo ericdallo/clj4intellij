@@ -10,16 +10,14 @@
        DumbAwareAction
         (actionPerformed [_ event] (on-performed event)))
    Output:
-     (do
-       (clojure.core/declare proxy_plus14738)
-       (clojure.core/let [_ [title description icon]]
-         (clojure.core/reify
-           DumbAwareAction
-           (actionPerformed [_ event] (on-performed event)))))
+     (clojure.core/let [_ [title description icon]]
+       (clojure.core/reify
+         DumbAwareAction
+         (actionPerformed [_ event] (on-performed event))))
    "
   [{{:keys [children]} :node :as _context}]
   (let [[_proxy+ & args] children
-        [proxy-name-sym super-args impls]
+        [_proxy-name-sym super-args impls]
         (if (symbol? (hooks/sexpr (first args)))
           [(first args)
            (first (rest args))
@@ -28,17 +26,12 @@
            (first args)
            (rest args)])
         new-node (hooks/list-node
-                  [(hooks/token-node 'do)
+                  [(hooks/token-node 'clojure.core/let)
+                   (hooks/vector-node [(hooks/token-node '_)
+                                       super-args])
                    (hooks/list-node
-                    [(hooks/token-node 'clojure.core/declare)
-                     proxy-name-sym])
-                   (hooks/list-node
-                    [(hooks/token-node 'clojure.core/let)
-                     (hooks/vector-node [(hooks/token-node '_)
-                                         super-args])
-                     (hooks/list-node
-                      (concat [(hooks/token-node 'clojure.core/reify)]
-                              impls))])])]
+                    (concat [(hooks/token-node 'clojure.core/reify)]
+                            impls))])]
     {:node new-node
      :defined-by 'com.rpl.proxy-plus/proxy+}))
 
@@ -52,6 +45,17 @@
   ;; the following code:
   (require '[clj-kondo.hooks-api :as hooks])
 
+  (->> "(proxy+ ClojureModuleType [\"CLOJURE_MODULE\"] ModuleType
+          (getName [_] \"Clojure\")
+          (getDescription [_] \"Create programs using the Clojure language.\")
+          (getNodeIcon [_ _] Icons/CLOJURE))"
+       hooks/parse-string
+       (assoc {} :node)
+       proxy+
+       :node
+       str)
+  ;; => "(clojure.core/let [_ [\"CLOJURE_MODULE\"]] (clojure.core/reify ModuleType (getName [_] \"Clojure\") (getDescription [_] \"Create programs using the Clojure language.\") (getNodeIcon [_ _] Icons/CLOJURE)))"
+
   (->> "(proxy+
          [^String title ^String description ^Icon icon]
          DumbAwareAction
@@ -61,5 +65,5 @@
        proxy+
        :node
        str)
-  ;; => "(do (clojure.core/declare proxy_plus14738) (clojure.core/let [_ [title description icon]] (clojure.core/reify DumbAwareAction (actionPerformed [_ event] (on-performed event)))))"
+  ;; => "(clojure.core/let [_ [title description icon]] (clojure.core/reify DumbAwareAction (actionPerformed [_ event] (on-performed event))))"
   )
