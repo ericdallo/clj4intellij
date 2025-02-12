@@ -14,7 +14,6 @@
 
 (set! *warn-on-reflection* true)
 
-#_{:clj-kondo/ignore [:unused-binding]}
 (defn register-action!
   "Dynamically register an action if not already registered."
   [& {:keys [id title description icon use-shortcut-of keyboard-shortcut on-performed action]
