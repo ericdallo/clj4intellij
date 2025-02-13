@@ -1,4 +1,4 @@
-(ns nubank.proxy-plus
+(ns clj4intellij.proxy-plus
   (:require [clj-kondo.hooks-api :as hooks]))
 
 (defn proxy+
