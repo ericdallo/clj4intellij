@@ -7,7 +7,8 @@ bin
 .classpath
 /.nrepl-port
 .lsp/.cache
-.clj-kondo/.cache
+.clj-kondo
+!.clj-kondo/config.edn
 .project
 .settings
 target

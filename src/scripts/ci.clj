@@ -40,10 +40,10 @@
   (shell "./gradlew clean")
   (fs/copy-tree "src/main/clojure/" "src/main/resources/")
   (shell "./gradlew build publishToMavenLocal")
-  (fs/delete-tree "src/main/resources/"))
+  (fs/delete-tree "src/main/resources/com/github/ericdallo/clj4intellij"))
 
 (defn deploy [& _]
   (shell "./gradlew clean")
   (fs/copy-tree "src/main/clojure/" "src/main/resources/")
   (shell "./gradlew build publish")
-  (fs/delete-tree "src/main/resources/"))
+  (fs/delete-tree "src/main/resources/com/github/ericdallo/clj4intellij"))
