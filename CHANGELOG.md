@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.7.1
+
 - Fix clojure-lsp hook
 
 ## 0.7.0
