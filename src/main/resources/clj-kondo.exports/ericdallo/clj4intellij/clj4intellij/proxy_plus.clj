@@ -1,5 +1,6 @@
 (ns clj4intellij.proxy-plus
-  (:require [clj-kondo.hooks-api :as hooks]))
+  (:require
+   [clj-kondo.hooks-api :as hooks]))
 
 (defn proxy+
   "Expands a proxy+ form into a reify form with a declared proxy name.
@@ -43,7 +44,6 @@
   ;; ; Error - no matches found for static method ASM9 in class org.objectweb.asm.Opcodes
   ;; So, you need to add clj-kondo to the deps.edn file in order to evaluate
   ;; the following code:
-  (require '[clj-kondo.hooks-api :as hooks])
 
   (->> "(proxy+ ClojureModuleType [\"CLOJURE_MODULE\"] ModuleType
           (getName [_] \"Clojure\")

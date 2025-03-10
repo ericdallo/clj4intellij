@@ -49,7 +49,7 @@ Add an application listener that will change the classloader on IntelliJ startup
 </applicationListeners>
 ```
 
-Now you can create clojure namespaces in your sourcepath (ex `src/main/clojure`), use clj4intellij helpers to create extensions or implement yourself extensions using Clojure's `gen-class`.
+Now you can create clojure namespaces in your sourcepath (ex `src/main/clojure`), use clj4intellij helpers to create extensions like `def-extension` or implement yourself extensions using Clojure's `gen-class`.
 
 ### Repl support
 

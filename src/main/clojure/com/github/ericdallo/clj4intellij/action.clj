@@ -17,10 +17,11 @@
 (defn register-action!
   "Dynamically register an action if not already registered."
   [& {:keys [id title description icon use-shortcut-of keyboard-shortcut on-performed action]
-      :or {action (proxy+
-                   [^String title ^String description ^Icon icon]
-                   DumbAwareAction
-                    (actionPerformed [_ event] (on-performed event)))}}]
+      :or {action #_{:clj-kondo/ignore [:destructured-or-binding-of-same-map]}
+           (proxy+
+            [^String title ^String description ^Icon icon]
+            DumbAwareAction
+             (actionPerformed [_ event] (on-performed event)))}}]
   (let [manager (ActionManager/getInstance)
         keymap-manager (KeymapManager/getInstance)
         keymap (.getActiveKeymap keymap-manager)]
