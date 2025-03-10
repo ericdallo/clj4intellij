@@ -48,6 +48,7 @@ repositories {
 dependencies {
     implementation ("org.clojure:clojure:1.11.1")
     implementation ("com.rpl:proxy-plus:0.0.9")
+    implementation ("camel-snake-kebab:camel-snake-kebab:0.4.3")
     implementation ("nrepl:nrepl:1.0.0")
 }
 
