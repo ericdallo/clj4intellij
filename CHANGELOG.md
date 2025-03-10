@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Fix clojure-lsp hook
+
 ## 0.7.0
 
 - Create `def-extension` to create plugin.xml extension points easily and more idiomatic.
