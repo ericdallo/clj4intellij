@@ -2,8 +2,6 @@
 
 ## [Unreleased]
 
-## 7.0.0
-
 - Create `def-extension` to create plugin.xml extension points easily and more idiomatic.
 
 ## 0.6.3
