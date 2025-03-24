@@ -79,6 +79,8 @@ This plugin has classes required to make possible code in Clojure a Intellij plu
 
 Also contains useful functions for a more Clojure idiomatic development avoid the directly use of java or Intellij API.
 
+> For more information about plugin development, read the [IntelliJ Plugin development](./doc/intellij-plugin-development.md) guide.
+
 ## Useful namespaces
 
 - `com.github.ericdallo.clj4intellij.app-manager` to handle `Application` calls.
@@ -87,3 +89,4 @@ Also contains useful functions for a more Clojure idiomatic development avoid th
 ## Plugins using clj4intellij
 
 - [clojure-lsp-intellij](https://github.com/clojure-lsp/clojure-lsp-intellij)
+- [clojure-repl-intellij](https://github.com/afucher/clojure-repl-intellij)
