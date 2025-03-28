@@ -2,4 +2,5 @@
  :tasks {tag ci/tag
          clean (shell "./gradlew clean")
          install ci/install
-         deploy ci/deploy}}
+         deploy ci/deploy
+         build ci/build}}

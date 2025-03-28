@@ -2,7 +2,8 @@
   "Test utilities for clj4intellij"
   (:import
    [com.intellij.testFramework EdtTestUtil LightProjectDescriptor]
-   [com.intellij.testFramework.fixtures CodeInsightTestFixture IdeaTestFixtureFactory IdeaTestFixtureFactoryImpl TestFixtureBuilder]
+   [com.intellij.testFramework.fixtures CodeInsightTestFixture IdeaTestFixtureFactory TestFixtureBuilder]
+   [com.intellij.testFramework.fixtures.impl IdeaTestFixtureFactoryImpl]
    [com.intellij.util ThrowableRunnable]
    [com.intellij.util.ui UIUtil]))
 
