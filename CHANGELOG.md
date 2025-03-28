@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Add support for tests.
+
 ## 0.7.1
 
 - Fix clojure-lsp hook
