@@ -2,7 +2,7 @@
   "Test utilities for clj4intellij"
   (:import
    [com.intellij.testFramework EdtTestUtil LightProjectDescriptor]
-   [com.intellij.testFramework.fixtures CodeInsightTestFixture IdeaTestFixtureFactory]
+   [com.intellij.testFramework.fixtures CodeInsightTestFixture IdeaTestFixtureFactory IdeaTestFixtureFactoryImpl TestFixtureBuilder]
    [com.intellij.util ThrowableRunnable]
    [com.intellij.util.ui UIUtil]))
 
@@ -15,9 +15,9 @@
    ref: https://github.com/JetBrains/intellij-community/blob/2766d0bf1cec76c0478244f6ad5309af527c245e/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java"
   ^CodeInsightTestFixture
   [project-name]
-  (let [factory (IdeaTestFixtureFactory/getFixtureFactory)
+  (let [factory ^IdeaTestFixtureFactoryImpl (IdeaTestFixtureFactory/getFixtureFactory)
         raw-fixture (-> factory
-                        (.createLightFixtureBuilder LightProjectDescriptor/EMPTY_PROJECT_DESCRIPTOR project-name)
+                        ^TestFixtureBuilder (.createLightFixtureBuilder LightProjectDescriptor/EMPTY_PROJECT_DESCRIPTOR project-name)
                         (.getFixture))
         fixture (.createCodeInsightFixture factory raw-fixture)]
     (.setUp fixture)
