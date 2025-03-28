@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.8.0
+
 - Add support for tests.
 
 ## 0.7.1
