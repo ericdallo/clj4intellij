@@ -1,10 +1,11 @@
 (ns com.github.ericdallo.clj4intellij.app-manager
   (:import
    [com.intellij.openapi.application ApplicationManager ModalityState]
-   [com.intellij.openapi.command CommandProcessor]
+   [com.intellij.openapi.command CommandProcessor WriteCommandAction]
    [com.intellij.openapi.command UndoConfirmationPolicy]
    [com.intellij.openapi.project Project]
-   [com.intellij.openapi.util Computable]))
+   [com.intellij.openapi.util Computable]
+   [com.intellij.util ThrowableRunnable]))
 
 (set! *warn-on-reflection* true)
 
@@ -78,3 +79,11 @@
      undo-confirmation-policy
      record-command-for-active-document?)
     p))
+
+(defn write-command-action
+  "API for `WriteCommandAction/writeCommandAction`."
+  [^Project project run-fn]
+  (.run (WriteCommandAction/writeCommandAction project)
+        (reify ThrowableRunnable
+          (run [_]
+            (run-fn)))))
