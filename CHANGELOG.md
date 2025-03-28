@@ -6,9 +6,6 @@
 
 - Drop support of older IntelliJ versions (2021/2022). Now requires minimum IntelliJ 2023.3 (Build 233)
 - Bump JAVA min version to 17
-
-## 0.8.0
-
 - Add support for tests.
 
 ## 0.7.1
