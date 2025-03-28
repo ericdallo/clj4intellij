@@ -8,13 +8,14 @@
 
 
 (defn setup
-  "Setup fixture factory, and return an instance of CodeInsightTestFixture
+  "Setup fixture factory, with an empty project and return an instance of CodeInsightTestFixture
    
    ref: https://github.com/JetBrains/intellij-community/blob/2766d0bf1cec76c0478244f6ad5309af527c245e/platform/testFramework/src/com/intellij/testFramework/fixtures/CodeInsightTestFixture.java"
-  ^CodeInsightTestFixture []
+  ^CodeInsightTestFixture
+  [project-name]
   (let [factory (IdeaTestFixtureFactory/getFixtureFactory)
         raw-fixture (-> factory
-                        (.createLightFixtureBuilder LightProjectDescriptor/EMPTY_PROJECT_DESCRIPTOR (str *ns*))
+                        (.createLightFixtureBuilder LightProjectDescriptor/EMPTY_PROJECT_DESCRIPTOR project-name)
                         (.getFixture))
         fixture (.createCodeInsightFixture factory raw-fixture)]
     (.setUp fixture)
@@ -33,15 +34,21 @@
 (defn dispatch-all-until
   "Dispatch all events in the EDT until condition is met.
    Returns a promise which can be `deref` to await the the condition to be met.
+
+   Receives a map with the following keys:
+   - `:cond-fn` - a function that returns true when the condition is met.
+   - `:millis` - the time to wait between dispatches (default: 100)
+
    See `dispatch-all` for more information."
-  [condition]
+  [{:keys [cond-fn millis]
+    :or {millis 100}}]
   (let [p (promise)]
     (future
       (loop []
-        (if (condition)
+        (if (cond-fn)
           (deliver p true)
           (do
             (dispatch-all)
-            (Thread/sleep 100)
+            (Thread/sleep millis)
             (recur)))))
     p))
