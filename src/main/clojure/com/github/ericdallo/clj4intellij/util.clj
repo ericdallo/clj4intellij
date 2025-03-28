@@ -2,13 +2,11 @@
   (:require
    [clojure.java.io :as io])
   (:import
-   [com.intellij.openapi.command WriteCommandAction]
    [com.intellij.openapi.editor Editor]
    [com.intellij.openapi.fileEditor FileEditorManager OpenFileDescriptor TextEditor]
    [com.intellij.openapi.project Project]
    [com.intellij.openapi.util.text StringUtil]
-   [com.intellij.openapi.vfs LocalFileSystem VirtualFile]
-   [com.intellij.util ThrowableRunnable]))
+   [com.intellij.openapi.vfs LocalFileSystem VirtualFile]))
 
 (defn editor->cursor-position [^Editor editor]
   (let [offset (.. editor getCaretModel getCurrentCaret getOffset)
@@ -30,11 +28,3 @@
 (defn uri->editor ^Editor [^String uri ^Project project ^Boolean focus?]
   (let [v-file (uri->v-file uri)]
     (v-file->editor v-file project focus?)))
-
-(defn write-command-action
-  "API for `WriteCommandAction/writeCommandAction`."
-  [^Project project run-fn]
-  (.run (WriteCommandAction/writeCommandAction project)
-        (reify ThrowableRunnable
-          (run [_]
-            (run-fn)))))

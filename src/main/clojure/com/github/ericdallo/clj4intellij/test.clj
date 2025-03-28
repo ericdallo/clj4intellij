@@ -7,6 +7,8 @@
    [com.intellij.util.ui UIUtil]))
 
 
+(set! *warn-on-reflection* true)
+
 (defn setup
   "Setup fixture factory, with an empty project and return an instance of CodeInsightTestFixture
    
