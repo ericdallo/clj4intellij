@@ -90,3 +90,7 @@ Also contains useful functions for a more Clojure idiomatic development avoid th
 
 - [clojure-lsp-intellij](https://github.com/clojure-lsp/clojure-lsp-intellij)
 - [clojure-repl-intellij](https://github.com/afucher/clojure-repl-intellij)
+
+# Support 
+
+Consider support the work of this project [here](https://github.com/sponsors/ericdallo) ❤️
