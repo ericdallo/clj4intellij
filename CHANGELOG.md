@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.9.0
+
 - Add `setup-heavy` to `com.github.ericdallo.clj4intellij.test`, returning a heavy/disk-backed `CodeInsightTestFixture`. Required for plugins that call `VirtualFile.toNioPath()` on the project base (e.g. recent LSP4IJ versions).
 
 ## 0.8.0
