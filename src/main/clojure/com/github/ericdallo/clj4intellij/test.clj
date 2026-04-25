@@ -2,7 +2,7 @@
   "Test utilities for clj4intellij"
   (:import
    [com.intellij.testFramework EdtTestUtil LightProjectDescriptor]
-   [com.intellij.testFramework.fixtures CodeInsightTestFixture IdeaTestFixtureFactory TestFixtureBuilder]
+   [com.intellij.testFramework.fixtures CodeInsightTestFixture IdeaProjectTestFixture IdeaTestFixtureFactory TempDirTestFixture TestFixtureBuilder]
    [com.intellij.testFramework.fixtures.impl IdeaTestFixtureFactoryImpl]
    [com.intellij.util ThrowableRunnable]
    [com.intellij.util.ui UIUtil]))
@@ -21,6 +21,26 @@
                         ^TestFixtureBuilder (.createLightFixtureBuilder LightProjectDescriptor/EMPTY_PROJECT_DESCRIPTOR project-name)
                         (.getFixture))
         fixture (.createCodeInsightFixture factory raw-fixture)]
+    (.setUp fixture)
+    fixture))
+
+(defn setup-heavy
+  "Like `setup`, but builds a heavy, disk-backed CodeInsightTestFixture.
+
+   Use this when the plugin under test relies on the project having a real
+   filesystem path — e.g. anything that calls `VirtualFile.toNioPath()` on
+   the project base. The light fixture from `setup` exposes the project
+   under the in-memory `TempFileSystem`, where `toNioPath` throws
+   `UnsupportedOperationException`.
+
+   ref: https://github.com/JetBrains/intellij-community/blob/2766d0bf1cec76c0478244f6ad5309af527c245e/platform/testFramework/src/com/intellij/testFramework/fixtures/IdeaTestFixtureFactory.java"
+  ^CodeInsightTestFixture
+  [project-name]
+  (let [factory     ^IdeaTestFixtureFactoryImpl (IdeaTestFixtureFactory/getFixtureFactory)
+        builder     ^TestFixtureBuilder (.createFixtureBuilder factory project-name)
+        project-fix ^IdeaProjectTestFixture (.getFixture builder)
+        temp-dir    ^TempDirTestFixture (.createTempDirTestFixture factory)
+        fixture     (.createCodeInsightFixture factory project-fix temp-dir)]
     (.setUp fixture)
     fixture))
 
